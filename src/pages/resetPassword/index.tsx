@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Stack, Box, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -15,9 +15,15 @@ import { ResetPasswordT } from "../../__typescript/resetPassword";
 import FullPageLoader from "../../components/loader/fullPageLoader";
 import InputPassword from "../../components/form/inputPassword";
 import ForgetPassword from "../../components/common/forgetPassword";
+import { toast } from "react-toastify";
 
 const validationSchema = Yup.object().shape({
-  newPassword: Yup.string().trim().min(6),
+  newPassword: Yup.string()
+    .trim()
+    .min(6)
+    .test("hasUpper", "isInvalid", (value) =>
+      Array.isArray(value?.match(/[A-Z]/g))
+    ),
   confirmPassword: Yup.string()
     .trim()
     .when("password", {
@@ -34,6 +40,8 @@ type Data = {
 const ResetPassword: FunctionComponent = () => {
   const { token } = useParams();
 
+  const navigate = useNavigate();
+
   const {
     handleSubmit,
     register,
@@ -46,6 +54,8 @@ const ResetPassword: FunctionComponent = () => {
   const onSubmit = async ({ newPassword }: Data) => {
     try {
       await http.post("reset-password", { token, newPassword });
+      toast.success("Password successfully updated");
+      navigate("/login");
     } catch (e: unknown) {}
   };
 
@@ -112,6 +122,7 @@ const ResetPassword: FunctionComponent = () => {
                 <InputPassword
                   label="Password"
                   error={!!errors.newPassword}
+                  helperText="Must have a minimum of 8 characters and contain at least one upper case letter,"
                   {...register("newPassword")}
                 />
 

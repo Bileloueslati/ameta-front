@@ -9,6 +9,7 @@ import { forwardRef, useId, useState } from "react";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
+import FormHelperText from "@mui/material/FormHelperText";
 
 type InputProps = InputBaseProps & {
   helperText?: string;
@@ -34,6 +35,7 @@ const InputPassword = forwardRef<HTMLInputElement, InputProps>(
           id={`outlined-adornment-password-${id}`}
           type={type}
           ref={ref}
+          error={error}
           {...props}
           endAdornment={
             <InputAdornment position="end">
@@ -52,6 +54,11 @@ const InputPassword = forwardRef<HTMLInputElement, InputProps>(
           }
           label="Password"
         />
+
+        {helperText && <FormHelperText id="component-helper-text">
+          {helperText}
+        </FormHelperText>}
+
       </FormControl>
     );
   }
