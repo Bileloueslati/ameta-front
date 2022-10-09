@@ -30,7 +30,10 @@ const ForgetPassword: FunctionComponent = () => {
       await http.post(`/forget-password`, { email });
     } catch (e: unknown) {
       isHttpError(e) &&
-        setError("email", { type: "user not found", message: e.message });
+        setError("email", {
+          type: "user not found",
+          message: "There is no user subscribed with this email",
+        });
     }
   };
 
@@ -53,7 +56,7 @@ const ForgetPassword: FunctionComponent = () => {
             error={!!errors.email}
             {...(errors?.email &&
               errors.email.type === "user not found" && {
-                helperText: "There is no user subscribed with this email",
+                helperText: errors.email.message,
               })}
             {...register("email")}
           />

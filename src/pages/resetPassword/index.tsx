@@ -122,7 +122,7 @@ const ResetPassword: FunctionComponent = () => {
                 <InputPassword
                   label="Password"
                   error={!!errors.newPassword}
-                  helperText="Must have a minimum of 8 characters and contain at least one upper case letter,"
+                  helperText="Must have a minimum of 6 characters and contain at least one upper case letter,"
                   {...register("newPassword")}
                 />
 
