@@ -1,6 +1,5 @@
 import { FunctionComponent, useEffect, useMemo, useState } from "react";
-import { Compagny, Pagination, User as UserT } from "../../../__typescript/api";
-import Modal from "../../modal";
+import { Compagny, Pagination, User as UserT } from "../../__typescript/api";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import {
@@ -14,16 +13,17 @@ import {
 } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useForm, Controller } from "react-hook-form";
-import InputPassword from "../../form/inputPassword";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { http } from "../../../libs/axios/http";
+import { http } from "../../libs/axios/http";
 import { mutate } from "swr";
 import { toast } from "react-toastify";
-import { ID } from "../../../__typescript/common";
+import { ID } from "../../__typescript/common";
 import useSWR from "swr";
 import { LoadingButton } from "@mui/lab";
-import WithModal, { InjectedModalProps } from "../../modal/withModal";
+import WithModal, { InjectedModalProps } from "../../components/modal/withModal";
+import Modal from "../../components/modal";
+import InputPassword from "../../components/form/inputPassword";
 
 type Props = {
   user?: UserT;

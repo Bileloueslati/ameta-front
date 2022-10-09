@@ -8,13 +8,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { LoadingButton } from "@mui/lab";
 import EastIcon from "@mui/icons-material/East";
-import InputPassword from "../../form/inputPassword";
-import { http, HttpError } from "../../../libs/axios/http";
 import useSWR from "swr";
-import FullPageLoader from "../../loader/fullPageLoader";
-import { ResetPasswordT } from "../../../__typescript/resetPassword";
-import ForgetPassword from "../../common/forgetPassword";
 import Alert from "@mui/material/Alert";
+import { http, HttpError } from "../../libs/axios/http";
+import { ResetPasswordT } from "../../__typescript/resetPassword";
+import FullPageLoader from "../../components/loader/fullPageLoader";
+import InputPassword from "../../components/form/inputPassword";
+import ForgetPassword from "../../components/common/forgetPassword";
 
 const validationSchema = Yup.object().shape({
   newPassword: Yup.string().trim().min(6),

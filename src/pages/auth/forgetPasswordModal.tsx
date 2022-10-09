@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useVisibilityState } from "webrix/hooks";
-import ForgetPassword from "../../../common/forgetPassword";
+import ForgetPassword from "../../components/common/forgetPassword";
 
 export default function ForgetPasswordModal() {
   const { visible, show, hide } = useVisibilityState(false);

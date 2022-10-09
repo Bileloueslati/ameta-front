@@ -1,11 +1,11 @@
 import useSWR from "swr";
-import { User as UserT, Pagination } from "../../../__typescript/api";
+import { User as UserT, Pagination } from "../../__typescript/api";
 import { Card, CardContent, Box, Stack, Typography } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import * as dayjs from "dayjs";
 import User from "./user";
 import { useState, startTransition, Fragment } from "react";
-import WithRoles from "../../../hoc/withRoles";
+import WithRoles from "../../hoc/withRoles";
 
 const columns: GridColDef[] = [
   {

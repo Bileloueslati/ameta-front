@@ -8,14 +8,13 @@ import {
   TextField,
   Grid,
 } from "@mui/material";
-import useUser from "../../../hooks/useUser";
 import { useForm } from "react-hook-form";
-import ImageUpload from "../../form/imageUpload";
-import { User } from "../../../__typescript/api";
 import useSWR from "swr";
 import { LoadingButton } from "@mui/lab";
-import { useAuth } from "../../../hooks/useAuth";
-import { http } from "../../../libs/axios/http";
+import useUser from "../../hooks/useUser";
+import { User } from "../../__typescript/api";
+import ImageUpload from "../../components/form/imageUpload";
+import { http } from "../../libs/axios/http";
 
 type UserData = Pick<User, "firstName" | "lastName" | "email">;
 

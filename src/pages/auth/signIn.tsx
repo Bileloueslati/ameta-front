@@ -4,13 +4,13 @@ import CardContent from "@mui/material/CardContent";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { http } from "../../../../libs/axios/http";
 import { LoadingButton } from "@mui/lab";
 import EastIcon from "@mui/icons-material/East";
-import { AuthData, useAuth } from "../../../../hooks/useAuth";
+import { AuthData, useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import InputPassword from "../../../form/inputPassword";
 import ForgetPasswordModal from "./forgetPasswordModal";
+import { http } from "../../libs/axios/http";
+import InputPassword from "../../components/form/inputPassword";
 
 type Form = {
   username: string;

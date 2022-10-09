@@ -8,9 +8,9 @@ import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
 import useSWR from "swr";
 import { useState, SyntheticEvent } from "react";
-import { SheetContextProvider } from "../../../contexts/sheet";
-import { Sheet as SheetT } from "../../../__typescript/sheet";
+import { Sheet as SheetT } from "../../__typescript/sheet";
 import SheetContainers from "./components/containers";
+import { SheetContextProvider } from "../../contexts/sheet";
 
 interface TabPanelProps {
   children?: React.ReactNode;

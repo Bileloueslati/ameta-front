@@ -1,17 +1,17 @@
 import { Autocomplete, Stack, TextField } from "@mui/material";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { FunctionComponent, useEffect, useState } from "react";
-import Modal from "../../../modal";
+import Modal from "../../../components/modal";
 import { useForm, Controller } from "react-hook-form";
-import { http } from "../../../../libs/axios/http";
+import { http } from "../../../libs/axios/http";
 import { LoadingButton } from "@mui/lab";
 import { mutate } from "swr";
 import { toast } from "react-toastify";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import { Compagny as CompagnyT } from "../../../../__typescript/api";
-import WithModal, { InjectedModalProps } from "../../../modal/withModal";
-import ImageUpload from "../../../form/imageUpload";
-import { countries } from "../../../../data/countriesAndStates";
+import { Compagny as CompagnyT } from "../../../__typescript/api";
+import WithModal, { InjectedModalProps } from "../../../components/modal/withModal";
+import { countries } from "../../../data/countriesAndStates";
+import ImageUpload from "../../../components/form/imageUpload";
 
 type Data = {
   name: string;

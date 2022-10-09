@@ -8,13 +8,13 @@ import {
   Avatar,
   Typography,
 } from "@mui/material";
-import { Compagny as CompagnyT, Pagination } from "../../../__typescript/api";
 import * as dayjs from "dayjs";
 import Compagny from "./components/company";
-import { FILE_PATH } from "../../../consts/common";
-import { HttpError } from "../../../libs/axios/http";
 import { Fragment } from "react";
-import WithRoles from "../../../hoc/withRoles";
+import { Pagination, Compagny as CompagnyT } from "../../__typescript/api";
+import { FILE_PATH } from "../../consts/common";
+import { HttpError } from "../../libs/axios/http";
+import WithRoles from "../../hoc/withRoles";
 
 const columns: GridColDef[] = [
   {
