@@ -2,7 +2,6 @@ import { Stack, Box, TextField, Typography, Alert } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { useForm } from "react-hook-form";
-import ForgetPassword from "./forgetPassword";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { http } from "../../../../libs/axios/http";
@@ -11,6 +10,7 @@ import EastIcon from "@mui/icons-material/East";
 import { AuthData, useAuth } from "../../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import InputPassword from "../../../form/inputPassword";
+import ForgetPasswordModal from "./forgetPasswordModal";
 
 type Form = {
   username: string;
@@ -131,7 +131,7 @@ export default function SignIn() {
             </Stack>
           </CardContent>
         </Card>
-        <ForgetPassword />
+        <ForgetPasswordModal />
       </Box>
     </Stack>
   );

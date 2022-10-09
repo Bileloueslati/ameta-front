@@ -21,5 +21,13 @@ export type SheetContainer = {
   consignee: string;
   packaging: number;
   volumem3: number;
-  delTerms: string;
+  delTerms: "DDU" | "EXW" | "FOB";
+  userId: number;
+  createdBy: User;
+  weight: number;
+  delivery: string;
+  atvylCosts: number;
+  atvylIncomes: number;
+  lusocargoCosts: number;
+  lusocargoIncomes: number;
 };

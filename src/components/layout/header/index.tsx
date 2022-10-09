@@ -9,7 +9,7 @@ import UserDropDown from "./userDropDown";
 export default function Header() {
   return (
     <Box sx={{ width: "100%", backgroundColor: "#fff", py: 0.5, mb: 4 }}>
-      <Container maxWidth={"xl"}>
+      <Container maxWidth={"xxl"}>
         <Stack justifyContent="space-between" direction="row">
           <Stack direction="row" spacing={4} alignItems="center">
             <Box

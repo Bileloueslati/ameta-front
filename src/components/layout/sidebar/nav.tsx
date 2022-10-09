@@ -1,5 +1,6 @@
 import { Stack, Box, Link } from "@mui/material";
 import intersection from "lodash/intersection";
+import { useLocation } from "react-router-dom";
 import useUser from "../../../hooks/useUser";
 import { UserRoles } from "../../../__typescript/api";
 
@@ -11,7 +12,7 @@ export default function Nav() {
     },
     {
       title: "Sheets",
-      path: "/",
+      path: "/sheets",
     },
 
     {
@@ -31,6 +32,8 @@ export default function Nav() {
   const isAllowed = (permissions: UserRoles) =>
     !!intersection(roles, permissions).length;
 
+  const { pathname: currentPath } = useLocation();
+
   return (
     <Box component="nav">
       <Stack
@@ -47,7 +50,15 @@ export default function Nav() {
           .map(({ title, path }, i) => (
             <Box key={i} component="li">
               {/* @ts-ignore */}
-              <Link to={path} sx={{ color: "#222" }}>
+              <Link
+                to={path}
+                sx={({ palette }) => ({
+                  color:
+                    currentPath === path
+                      ? palette.primary.main
+                      : palette.secondary.main,
+                })}
+              >
                 <Box
                   component="span"
                   sx={{

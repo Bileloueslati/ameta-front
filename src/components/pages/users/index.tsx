@@ -4,8 +4,8 @@ import { Card, CardContent, Box, Stack, Typography } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import * as dayjs from "dayjs";
 import User from "./user";
-import { useState, startTransition } from "react";
-import RestrictedRoute from "../../routes/restrictedRoute";
+import { useState, startTransition, Fragment } from "react";
+import WithRoles from "../../../hoc/withRoles";
 
 const columns: GridColDef[] = [
   {
@@ -44,7 +44,7 @@ const columns: GridColDef[] = [
 
 type Offset = 25 | 50 | 75 | 100;
 
-export default function Accounts() {
+const Accounts = () => {
   const [page, setPage] = useState<number>(1);
 
   const [offset, setOffset] = useState<Offset>(25);
@@ -64,7 +64,7 @@ export default function Accounts() {
   if (!users) return null;
 
   return (
-    <RestrictedRoute permissions={["ROLE_ADMIN", "ROLE_SUPERADMIN"]}>
+    <Fragment>
       <Stack direction="row" justifyContent="space-between" spacing={3} mb={3}>
         <Typography variant="h2">Users</Typography>
         <User />
@@ -104,6 +104,8 @@ export default function Accounts() {
           </Box>
         </CardContent>
       </Card>
-    </RestrictedRoute>
+    </Fragment>
   );
-}
+};
+
+export default WithRoles(Accounts, ["ROLE_ADMIN", "ROLE_SUPERADMIN"]);

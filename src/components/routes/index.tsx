@@ -7,6 +7,7 @@ import SignIn from "../pages/dashboard/auth/signIn";
 import PrivateRoute from "./privateRoute";
 import UserProfile from "../pages/userProfile";
 import Sheet from "../pages/sheet";
+import ResetPassword from "../pages/resetPassword";
 
 export default function Routes() {
   return (
@@ -24,6 +25,7 @@ export default function Routes() {
       <ReactRoutes>
         <Route element={<BlankLayout />}>
           <Route path="/login" element={<SignIn />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
         </Route>
       </ReactRoutes>
     </BrowserRouter>

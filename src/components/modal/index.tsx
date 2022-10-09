@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import { FunctionComponent, PropsWithChildren } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import { Dispatch, SetStateAction } from "react";
 import { InjectedModalProps } from "./withModal";
 
 type Props = PropsWithChildren &

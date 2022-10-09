@@ -5,21 +5,14 @@ import {
   Modal,
   Fade,
   Typography,
-  TextField,
+  IconButton,
 } from "@mui/material";
-import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
+import { useVisibilityState } from "webrix/hooks";
+import ForgetPassword from "../../../common/forgetPassword";
 
-export default function ForgetPassword() {
-  const [open, setOpen] = useState(false);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
+export default function ForgetPasswordModal() {
+  const { visible, show, hide } = useVisibilityState(false);
 
   return (
     <>
@@ -45,7 +38,7 @@ export default function ForgetPassword() {
         }}
       >
         <Button
-          onClick={handleOpen}
+          onClick={show}
           variant="text"
           size="small"
           sx={{
@@ -57,8 +50,8 @@ export default function ForgetPassword() {
         </Button>
       </Box>
 
-      <Modal open={open} onClose={handleClose} keepMounted>
-        <Fade in={open}>
+      <Modal open={visible} onClose={close} keepMounted>
+        <Fade in={visible}>
           <Box
             sx={{
               position: "absolute",
@@ -76,32 +69,24 @@ export default function ForgetPassword() {
               py: 4,
             }}
           >
-            <Stack direction="row" justifyContent="space-between" spacing={4}>
+            <Stack direction="row" justifyContent="space-between" spacing={2}>
               <Box>
-                <Typography variant="h2" color="secondary" fontSize={22}>
-                  Reset password
+                <Typography variant="h2" color="primary" fontSize={22}>
+                  Forget password
                 </Typography>
                 <Typography>
                   You will receive an e-mail to with instructions to reset your
                   password shortly.
                 </Typography>
               </Box>
-
-              <CloseIcon
-                fontSize="large"
-                sx={{ cursor: "pointer" }}
-                onClick={handleClose}
-              />
-            </Stack>
-
-            <Stack component="form" spacing={2} mt={3}>
-              <TextField color="secondary" label="Email" />
-              <Box sx={{ display: "flex", alignSelf: "center" }}>
-                <Button size="large" variant="contained">
-                  Send email
-                </Button>
+              <Box>
+                <IconButton onClick={hide}>
+                  <CloseIcon fontSize="large" sx={{ cursor: "pointer" }} />
+                </IconButton>
               </Box>
             </Stack>
+
+            <ForgetPassword />
           </Box>
         </Fade>
       </Modal>

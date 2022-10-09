@@ -14,7 +14,7 @@ const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
     >
       <Header />
 
-      <Container maxWidth={"xl"}>{children}</Container>
+      <Container maxWidth="xxl">{children}</Container>
     </Stack>
   );
 };

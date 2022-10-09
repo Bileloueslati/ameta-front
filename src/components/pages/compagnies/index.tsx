@@ -12,7 +12,9 @@ import { Compagny as CompagnyT, Pagination } from "../../../__typescript/api";
 import * as dayjs from "dayjs";
 import Compagny from "./components/company";
 import { FILE_PATH } from "../../../consts/common";
-import RestrictedRoute from "../../routes/restrictedRoute";
+import { HttpError } from "../../../libs/axios/http";
+import { Fragment } from "react";
+import WithRoles from "../../../hoc/withRoles";
 
 const columns: GridColDef[] = [
   {
@@ -69,13 +71,15 @@ const columns: GridColDef[] = [
   },
 ];
 
-export default function Compagnies() {
-  const { data: compagnies } = useSWR<Pagination<CompagnyT>>("/compagnies");
+const Compagnies = () => {
+  const { data: compagnies } = useSWR<Pagination<CompagnyT>, HttpError>(
+    "/compagnies"
+  );
 
   if (!compagnies) return null;
 
   return (
-    <RestrictedRoute permissions={["ROLE_SUPERADMIN"]}>
+    <Fragment>
       <Stack direction="row" justifyContent="space-between" spacing={3} mb={3}>
         <Typography variant="h2">Companies</Typography>
         <Compagny />
@@ -114,6 +118,8 @@ export default function Compagnies() {
           </Box>
         </CardContent>
       </Card>
-    </RestrictedRoute>
+    </Fragment>
   );
-}
+};
+
+export default WithRoles(Compagnies, ["ROLE_SUPERADMIN"]);
