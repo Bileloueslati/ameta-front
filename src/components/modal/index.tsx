@@ -63,20 +63,20 @@ const Modal: FunctionComponent<Props> = ({
               alignItems="center"
               justifyContent="space-between"
               spacing={4}
-              sx={{
+              sx={({ palette }) => ({
                 pt: 1,
                 px: 3,
-                borderBottom: "1px solid #eee",
-              }}
+                borderBottom: `1px solid ${palette.divider}`,
+              })}
             >
               <Box>
-                <Typography variant="h2" color="secondary" fontSize={22}>
+                <Typography variant="h2" color="text.primary" fontSize={22}>
                   {title}
                 </Typography>
               </Box>
 
               <IconButton onClick={close}>
-                <CloseIcon fontSize="large" sx={{ cursor: "pointer" }} />
+                <CloseIcon fontSize="large" />
               </IconButton>
             </Stack>
 

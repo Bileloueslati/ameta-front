@@ -4,6 +4,7 @@ import {
   Box,
   Modal,
   Fade,
+  Paper,
   Typography,
   IconButton,
 } from "@mui/material";
@@ -17,7 +18,7 @@ export default function ForgetPasswordModal() {
   return (
     <>
       <Box
-        sx={{
+        sx={({ palette }) => ({
           mt: 2,
           position: "relative",
           "&::before, &::after": {
@@ -25,7 +26,7 @@ export default function ForgetPasswordModal() {
             position: "absolute",
             height: "1px",
             width: "35%",
-            backgroundColor: "rgba(0, 0, 0, 0.4)",
+            backgroundColor: palette.divider,
             top: "50%",
             zIndex: "-1",
           },
@@ -35,7 +36,7 @@ export default function ForgetPasswordModal() {
           "&::after": {
             right: 0,
           },
-        }}
+        })}
       >
         <Button
           onClick={show}
@@ -52,7 +53,8 @@ export default function ForgetPasswordModal() {
 
       <Modal open={visible} onClose={close} keepMounted>
         <Fade in={visible}>
-          <Box
+          <Paper
+            elevation={1}
             sx={{
               position: "absolute",
               top: "50%",
@@ -63,7 +65,6 @@ export default function ForgetPasswordModal() {
                 md: 600,
               },
               borderRadius: 2,
-              bgcolor: "background.paper",
               boxShadow: 24,
               px: 3,
               py: 4,
@@ -87,7 +88,7 @@ export default function ForgetPasswordModal() {
             </Stack>
 
             <ForgetPassword />
-          </Box>
+          </Paper>
         </Fade>
       </Modal>
     </>

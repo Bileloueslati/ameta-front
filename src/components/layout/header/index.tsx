@@ -1,5 +1,6 @@
 import { Stack, Container, Box, Paper } from "@mui/material";
 import useThemeMode from "../../../hooks/useThemeMode";
+import Logo from "../../logo";
 import Nav from "../sidebar/nav";
 import NavExpander from "./navExpander";
 import Notifications from "./notifications";
@@ -12,7 +13,7 @@ export default function Header() {
 
   return (
     <Paper
-      elevation={0}
+      elevation={1}
       sx={({ palette }) => ({
         width: "100%",
         py: 0.5,
@@ -22,11 +23,7 @@ export default function Header() {
       <Container maxWidth={"xxl"}>
         <Stack justifyContent="space-between" direction="row">
           <Stack direction="row" spacing={4} alignItems="center">
-            <Box
-              component="img"
-              src={`/img/${mode == "dark" ? "white" : "dark"}-logo.png`}
-              sx={{ maxWidth: 260 }}
-            />
+            <Logo sx={{ maxWidth: 260 }} />
 
             <Box>
               <Nav />

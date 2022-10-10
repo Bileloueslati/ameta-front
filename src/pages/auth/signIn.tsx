@@ -12,6 +12,7 @@ import ForgetPasswordModal from "./forgetPasswordModal";
 import { http } from "../../libs/axios/http";
 import InputPassword from "../../components/form/inputPassword";
 import useThemeMode from "../../hooks/useThemeMode";
+import Logo from "../../components/logo";
 
 type Form = {
   username: string;
@@ -69,13 +70,8 @@ export default function SignIn() {
           },
         }}
       >
-        <Box
-          component="img"
-          src={`/img/${mode == "dark" ? "white" : "dark"}-logo.png`}
-          sx={{ maxWidth: 300, mx: "auto", mb: 2 }}
-          alt=""
-        />
-<source />
+        <Logo sx={{ maxWidth: 300, mx: "auto", mb: 2 }} />
+
         <Card sx={{ minWidth: "100%", borderRadius: 2 }}>
           <CardContent
             sx={{
@@ -107,7 +103,6 @@ export default function SignIn() {
               }}
             >
               <TextField
-                color="secondary"
                 label="Email"
                 variant="outlined"
                 error={!!errors.username}

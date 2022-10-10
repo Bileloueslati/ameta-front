@@ -51,7 +51,6 @@ const ForgetPassword: FunctionComponent = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <TextField
-            color="secondary"
             label="Email"
             error={!!errors.email}
             {...(errors?.email &&

@@ -27,7 +27,7 @@ const InputPassword = forwardRef<HTMLInputElement, InputProps>(
     const id = useId();
 
     return (
-      <FormControl variant="outlined" color="secondary" fullWidth>
+      <FormControl variant="outlined" fullWidth>
         <InputLabel htmlFor={`outlined-adornment-password-${id}`}>
           {label}
         </InputLabel>
@@ -55,10 +55,11 @@ const InputPassword = forwardRef<HTMLInputElement, InputProps>(
           label="Password"
         />
 
-        {helperText && <FormHelperText id="component-helper-text">
-          {helperText}
-        </FormHelperText>}
-
+        {helperText && (
+          <FormHelperText id="component-helper-text">
+            {helperText}
+          </FormHelperText>
+        )}
       </FormControl>
     );
   }
