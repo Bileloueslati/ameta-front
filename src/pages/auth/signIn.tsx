@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import ForgetPasswordModal from "./forgetPasswordModal";
 import { http } from "../../libs/axios/http";
 import InputPassword from "../../components/form/inputPassword";
+import useThemeMode from "../../hooks/useThemeMode";
 
 type Form = {
   username: string;
@@ -35,6 +36,8 @@ export default function SignIn() {
   const { login } = useAuth();
 
   const navigate = useNavigate();
+
+  const { mode } = useThemeMode();
 
   const onSubmit = async (formData: Form) => {
     try {
@@ -68,13 +71,11 @@ export default function SignIn() {
       >
         <Box
           component="img"
-          src="/img/dark-logo.png"
-          sx={{
-            maxWidth: 300,
-            mx: "auto",
-            mb: 2,
-          }}
+          src={`/img/${mode == "dark" ? "white" : "dark"}-logo.png`}
+          sx={{ maxWidth: 300, mx: "auto", mb: 2 }}
+          alt=""
         />
+<source />
         <Card sx={{ minWidth: "100%", borderRadius: 2 }}>
           <CardContent
             sx={{
