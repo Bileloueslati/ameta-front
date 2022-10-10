@@ -1,7 +1,7 @@
-import { createTheme } from "@mui/material/styles";
 import { Link, LinkProps as RouterLinkProps } from "react-router-dom";
 import { LinkProps } from "@mui/material/Link";
 import { forwardRef } from "react";
+import { PaletteMode, ThemeOptions } from "@mui/material";
 
 const LinkBehavior = forwardRef<
   HTMLAnchorElement,
@@ -11,7 +11,17 @@ const LinkBehavior = forwardRef<
   return <Link ref={ref} to={href} {...other} />;
 });
 
-export const theme = createTheme({
+export const getTheme = (mode: PaletteMode): ThemeOptions => ({
+  palette: {
+    mode,
+    primary: {
+      main: "#d63031",
+    },
+    secondary: {
+      main: "#1a1d21",
+    },
+  },
+
   breakpoints: {
     values: {
       xs: 0,
@@ -63,14 +73,6 @@ export const theme = createTheme({
     allVariants: {
       fontFamily: "DM Sans",
       fontWeight: 400,
-    },
-  },
-  palette: {
-    primary: {
-      main: "#d63031",
-    },
-    secondary: {
-      main: "#1a1d21",
     },
   },
 });

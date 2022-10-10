@@ -1,16 +1,20 @@
 import { Box, Stack, Container } from "@mui/material";
 import { FunctionComponent, PropsWithChildren } from "react";
+import useThemeMode from "../../hooks/useThemeMode";
 import Header from "./header";
 
 const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
+  const { mode } = useThemeMode();
+
   return (
     <Stack
-      sx={{
+      sx={({ palette }) => ({
         minHeight: "100vh",
         width: "100%",
         overflow: "hidden",
-        backgroundColor: "rgb(241 245 249)",
-      }}
+        backgroundColor:
+          mode == "dark" ? palette.background.default : "#dfe6e9",
+      })}
     >
       <Header />
 

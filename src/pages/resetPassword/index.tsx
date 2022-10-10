@@ -56,7 +56,9 @@ const ResetPassword: FunctionComponent = () => {
       await http.post("reset-password", { token, newPassword });
       toast.success("Password successfully updated");
       navigate("/login");
-    } catch (e: unknown) {}
+    } catch (e: unknown) {
+      toast.error("An error occurred while updating your password");
+    }
   };
 
   const { data, error } = useSWR<ResetPasswordT, HttpError>(

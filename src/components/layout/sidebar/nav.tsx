@@ -56,7 +56,7 @@ export default function Nav() {
                   color:
                     currentPath === path
                       ? palette.primary.main
-                      : palette.secondary.main,
+                      : palette.text.primary,
                 })}
               >
                 <Box

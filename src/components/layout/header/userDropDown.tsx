@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import Person4OutlinedIcon from "@mui/icons-material/Person4Outlined";
 import { useAuth } from "../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { PopupState as PopupStateT } from "material-ui-popup-state/core";
@@ -36,7 +35,9 @@ export default function UserDropDown() {
             >
               <Stack direction="row" alignItems="center" spacing={1}>
                 <Avatar alt="" src="/img/avatar.jfif" />
-                <Typography>Hi, {firstName}</Typography>
+                <Typography sx={{ color: "text.primary" }}>
+                  Hi, {firstName}
+                </Typography>
               </Stack>
             </Button>
             <Menu {...bindMenu(popupState)}>
@@ -45,7 +46,6 @@ export default function UserDropDown() {
                   redirect("profile");
                 }}
               >
-                <Person4OutlinedIcon />
                 <Typography>My account</Typography>
               </MenuItem>
               <MenuItem onClick={logout}>Logout</MenuItem>
