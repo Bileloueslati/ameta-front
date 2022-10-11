@@ -9,9 +9,8 @@ import EastIcon from "@mui/icons-material/East";
 import { AuthData, useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import ForgetPasswordModal from "./forgetPasswordModal";
-import { http } from "../../libs/axios/http";
+import { http, isHttpError } from "../../libs/axios/http";
 import InputPassword from "../../components/form/inputPassword";
-import useThemeMode from "../../hooks/useThemeMode";
 import Logo from "../../components/logo";
 
 type Form = {
@@ -38,8 +37,6 @@ export default function SignIn() {
 
   const navigate = useNavigate();
 
-  const { mode } = useThemeMode();
-
   const onSubmit = async (formData: Form) => {
     try {
       const { data } = await http.post<AuthData>("/auth/login", formData);
@@ -47,11 +44,13 @@ export default function SignIn() {
       login(data);
 
       navigate("/");
-    } catch (err: any) {
+    } catch (e: unknown) {
       Object.keys(formData).forEach((el) => {
         setError(el as keyof Form, {
           type: "credential",
-          message: "Invalid credentials",
+          message: isHttpError(e)
+            ? e.response?.data?.message
+            : "Invalid credentials",
         });
       });
     }
@@ -89,7 +88,7 @@ export default function SignIn() {
 
               {errors?.username?.type === "credential" && (
                 <Alert severity="error" sx={{ mt: 2 }}>
-                  Invalid credentials
+                  {errors.username.message}
                 </Alert>
               )}
             </Box>

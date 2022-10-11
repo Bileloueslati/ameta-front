@@ -8,8 +8,9 @@ const config: AxiosRequestConfig = {
   baseURL: API_END_POINT,
 };
 
-export const isHttpError = (error: any): error is AxiosError =>
-  axios.isAxiosError(error);
+export const isHttpError = (
+  error: any
+): error is AxiosError<{ message: string }> => axios.isAxiosError(error);
 
 export type HttpError = AxiosError;
 
