@@ -1,6 +1,7 @@
 import {
   Modal as MuiModal,
   Box,
+  Paper,
   Fade,
   Stack,
   Typography,
@@ -42,7 +43,8 @@ const Modal: FunctionComponent<Props> = ({
 
       <MuiModal open={isOpen} onClose={close}>
         <Fade in={isOpen}>
-          <Box
+          <Paper
+            elevation={1}
             sx={{
               position: "absolute",
               top: "50%",
@@ -54,7 +56,6 @@ const Modal: FunctionComponent<Props> = ({
                 ...width,
               },
               borderRadius: 2,
-              bgcolor: "background.paper",
               boxShadow: 24,
             }}
           >
@@ -81,7 +82,7 @@ const Modal: FunctionComponent<Props> = ({
             </Stack>
 
             <Box sx={{ mt: 1, px: 3, py: 2 }}>{children}</Box>
-          </Box>
+          </Paper>
         </Fade>
       </MuiModal>
     </>

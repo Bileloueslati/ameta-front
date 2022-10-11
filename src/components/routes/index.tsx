@@ -7,6 +7,7 @@ import Sheet from "../../pages/sheet";
 import UserProfile from "../../pages/userProfile";
 import Users from "../../pages/users";
 import BlankLayout from "../layout/blankLayout";
+import Sheets from "../sheets";
 import PrivateRoute from "./privateRoute";
 
 export default function Routes() {
@@ -14,12 +15,14 @@ export default function Routes() {
     <BrowserRouter>
       <ReactRoutes>
         <Route path="/" element={<PrivateRoute />}>
-          <Route index={true} element={<Dashboard
-           />} />
+          <Route index={true} element={<Dashboard />} />
           <Route path="/companies" element={<Compagnies />}></Route>
           <Route path="/accounts" element={<Users />}></Route>
           <Route path="/profile" element={<UserProfile />}></Route>
-          <Route path="/sheets/:id" element={<Sheet />}></Route>
+          <Route path="/sheets">
+            <Route index element={<Sheets />}></Route>
+            <Route path=":id" element={<Sheet />}></Route>
+          </Route>
         </Route>
       </ReactRoutes>
 

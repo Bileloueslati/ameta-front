@@ -14,6 +14,7 @@ const Logo: FunctionComponent<Props> = (props) => {
     <Box
       component="img"
       src={`/img/${mode == "dark" ? "light" : "dark"}-logo.png`}
+      alt=""
       {...props}
     />
   );

@@ -76,7 +76,7 @@ export default function ForgetPasswordModal() {
                   Forget password
                 </Typography>
                 <Typography>
-                  You will receive an e-mail to with instructions to reset your
+                  You will receive an e-mail with instructions to reset your
                   password shortly.
                 </Typography>
               </Box>

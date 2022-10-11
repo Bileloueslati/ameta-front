@@ -1,4 +1,4 @@
-import { Stack, Container, Box, Paper } from "@mui/material";
+import { Stack, Container, Box, Paper, Link } from "@mui/material";
 import useThemeMode from "../../../hooks/useThemeMode";
 import Logo from "../../logo";
 import Nav from "../sidebar/nav";
@@ -23,7 +23,9 @@ export default function Header() {
       <Container maxWidth={"xxl"}>
         <Stack justifyContent="space-between" direction="row">
           <Stack direction="row" spacing={4} alignItems="center">
-            <Logo sx={{ maxWidth: 260 }} />
+            <Link href="/">
+              <Logo sx={{ maxWidth: 260 }} />
+            </Link>
 
             <Box>
               <Nav />
