@@ -6,6 +6,7 @@ import * as dayjs from "dayjs";
 import User from "./user";
 import { useState, startTransition, Fragment } from "react";
 import WithRoles from "../../hoc/withRoles";
+import UserActivation from "./components/activation";
 
 const columns: GridColDef[] = [
   {
@@ -32,6 +33,14 @@ const columns: GridColDef[] = [
     field: "compagnyName",
     headerName: "Company name",
     flex: 1,
+  },
+
+  {
+    field: "user_activation",
+    type: "actions",
+    headerName: "Activation",
+    flex: 1,
+    renderCell: (params) => <UserActivation user={params.row} />,
   },
 
   {
@@ -89,7 +98,15 @@ const Accounts = () => {
               density="standard"
               columns={columns}
               rows={users.items.map(
-                ({ id, firstName, lastName, createdAt, email, compagny }) => ({
+                ({
+                  id,
+                  firstName,
+                  lastName,
+                  createdAt,
+                  email,
+                  isActive,
+                  compagny,
+                }) => ({
                   id,
                   createdAt: dayjs(createdAt).format("DD/MM/YYYY"),
                   fullName: `${firstName} ${lastName}`,
@@ -97,6 +114,7 @@ const Accounts = () => {
                   lastName,
                   email,
                   compagny,
+                  isActive,
                   compagnyName: compagny.name,
                 })
               )}
