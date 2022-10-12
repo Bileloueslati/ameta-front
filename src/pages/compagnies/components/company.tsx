@@ -1,6 +1,6 @@
 import { Autocomplete, Stack, TextField } from "@mui/material";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect } from "react";
 import Modal from "../../../components/modal";
 import { useForm, Controller } from "react-hook-form";
 import { http } from "../../../libs/axios/http";
@@ -9,9 +9,12 @@ import { mutate } from "swr";
 import { toast } from "react-toastify";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { Compagny as CompagnyT } from "../../../__typescript/api";
-import WithModal, { InjectedModalProps } from "../../../components/modal/withModal";
+import WithModal, {
+  InjectedModalProps,
+} from "../../../components/modal/withModal";
 import { countries } from "../../../data/countriesAndStates";
 import ImageUpload from "../../../components/form/imageUpload";
+import { getCountryNameFromCode } from "../../../consts/intl";
 
 type Data = {
   name: string;
@@ -96,17 +99,22 @@ const Compagny: FunctionComponent<Props> = ({ compagny, ...modalState }) => {
               {...controllerProps}
               fullWidth
               disablePortal
-              options={countries.map(({ name }) => ({
+              options={countries.map(({ name, iso2 }) => ({
                 label: name,
+                value: iso2,
                 id: name,
               }))}
               renderInput={(params) => <TextField {...params} />}
               isOptionEqualToValue={(option: any, value: any) =>
                 option.label === value.label
               }
-              onChange={(e: any, value) => onChange(value?.label || null)}
+              onChange={(_, value) => onChange(value?.value || null)}
               {...(compagny?.country && {
-                defaultValue: { id: compagny.country, label: compagny.country },
+                defaultValue: {
+                  id: compagny.country,
+                  label: getCountryNameFromCode(compagny.country),
+                  value: compagny.country,
+                },
               })}
             />
           )}
