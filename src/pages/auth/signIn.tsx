@@ -58,10 +58,8 @@ export default function SignIn() {
 
   return (
     <Stack justifyContent="center" minHeight="100vh">
-      <Box
+      <Stack
         sx={{
-          display: "flex",
-          flexDirection: "column",
           m: "0 auto",
           width: {
             xs: "95%",
@@ -71,7 +69,7 @@ export default function SignIn() {
       >
         <Logo sx={{ maxWidth: 300, mx: "auto", mb: 2 }} />
 
-        <Card sx={{ minWidth: "100%", borderRadius: 2 }}>
+        <Card sx={{ minWidth: "100%", borderRadius: 2, boxShadow: 2 }}>
           <CardContent
             sx={{
               px: 6,
@@ -127,7 +125,7 @@ export default function SignIn() {
           </CardContent>
         </Card>
         <ForgetPasswordModal />
-      </Box>
+      </Stack>
     </Stack>
   );
 }
