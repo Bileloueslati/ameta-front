@@ -15,6 +15,8 @@ import { Pagination, Compagny as CompagnyT } from "../../__typescript/api";
 import { FILE_PATH } from "../../consts/common";
 import { HttpError } from "../../libs/axios/http";
 import WithRoles from "../../hoc/withRoles";
+import FullPageLoader from "../../components/loader/fullPageLoader";
+import Image from "../../components/img";
 
 const columns: GridColDef[] = [
   {
@@ -61,6 +63,9 @@ const columns: GridColDef[] = [
     field: "country",
     headerName: "Country",
     flex: 1,
+    renderCell: ({ formattedValue }) => {
+      return <Image src={`https://flagcdn.com/24x18/${formattedValue}.png`} />;
+    },
   },
   {
     field: "actions",
@@ -76,7 +81,7 @@ const Compagnies = () => {
     "/compagnies"
   );
 
-  if (!compagnies) return null;
+  if (!compagnies) return <FullPageLoader />;
 
   return (
     <Fragment>
