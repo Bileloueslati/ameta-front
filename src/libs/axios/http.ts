@@ -35,7 +35,7 @@ http.interceptors.request.use((config) => {
 });
 
 /**
- * Expired JWT
+ * Expired JWT and disabled user case
  */
 
 http.interceptors.response.use(
@@ -43,11 +43,11 @@ http.interceptors.response.use(
   (error) => {
     if (
       error.response.status === 401 &&
-      error.response?.data?.message === "Expired JWT Token"
+      error.response?.data?.message === "User is disabled"
     ) {
       useAuth.setState({ token: null });
 
-      toast.error("Please login below to connect.");
+      toast.error("Your account is disabled !");
     } else {
       return Promise.reject(error);
     }
