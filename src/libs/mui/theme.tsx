@@ -14,12 +14,31 @@ const LinkBehavior = forwardRef<
 export const getTheme = (mode: PaletteMode): ThemeOptions => ({
   palette: {
     mode,
-    primary: {
-      main: "#d63031",
-    },
-    secondary: {
-      main: "#1a1d21",
-    },
+    ...(mode === "light"
+      ? {
+          background: {
+            default: "#eeeeee80",
+            paper: "#fff",
+          },
+          primary: {
+            main: "#d63031",
+          },
+          secondary: {
+            main: "#1a1d21",
+          },
+        }
+      : {
+          background: {
+            default: "#212428",
+            paper: "#212428",
+          },
+          primary: {
+            main: "#d63031",
+          },
+          secondary: {
+            main: "#1a1d21",
+          },
+        }),
   },
 
   breakpoints: {
