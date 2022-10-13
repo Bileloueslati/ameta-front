@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import * as dayjs from "dayjs";
 import Compagny from "./components/company";
-import { Fragment } from "react";
+import { FC, Fragment } from "react";
 import { Pagination, Compagny as CompagnyT } from "../../__typescript/api";
 import { FILE_PATH } from "../../consts/common";
 import { HttpError } from "../../libs/axios/http";
@@ -76,7 +76,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-const Compagnies = () => {
+const Compagnies: FC = () => {
   const { data: compagnies } = useSWR<Pagination<CompagnyT>, HttpError>(
     "/compagnies"
   );
