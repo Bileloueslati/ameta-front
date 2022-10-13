@@ -2,6 +2,7 @@ import { Stack, Container, Box, Paper, Link } from "@mui/material";
 import useThemeMode from "../../../hooks/useThemeMode";
 import Logo from "../../logo";
 import Nav from "../sidebar/nav";
+import FullScreen from "./fullScreen";
 import NavExpander from "./navExpander";
 import Notifications from "./notifications";
 import Search from "./search";
@@ -32,7 +33,8 @@ export default function Header() {
             </Box>
           </Stack>
 
-          <Stack direction="row" spacing={3} alignItems="center">
+          <Stack direction="row" spacing={2} alignItems="center">
+            <FullScreen />
             <ThemeModeSwitcher />
             <Notifications />
             <UserDropDown />
