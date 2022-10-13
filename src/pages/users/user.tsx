@@ -21,7 +21,9 @@ import { toast } from "react-toastify";
 import { ID } from "../../__typescript/common";
 import useSWR from "swr";
 import { LoadingButton } from "@mui/lab";
-import WithModal, { InjectedModalProps } from "../../components/modal/withModal";
+import WithModal, {
+  InjectedModalProps,
+} from "../../components/modal/withModal";
 import Modal from "../../components/modal";
 import InputPassword from "../../components/form/inputPassword";
 
@@ -64,8 +66,8 @@ const User: FunctionComponent<Props> = ({ user, ...modalState }) => {
     formState: { errors, isSubmitting },
   } = useForm<Data>({
     resolver: yupResolver(validationSchema),
-    defaultValues: useMemo(() => {
-      if (user) {
+    ...(user && {
+      defaultValues: useMemo(() => {
         const {
           email,
           firstName,
@@ -74,10 +76,8 @@ const User: FunctionComponent<Props> = ({ user, ...modalState }) => {
         } = user;
 
         return { email, firstName, lastName, compagnyId };
-      }
-
-      return undefined;
-    }, [user]),
+      }, [user]),
+    }),
   });
 
   const onSubmit = async (data: Data) => {
