@@ -1,5 +1,5 @@
 import { Grid, Paper, Stack, Typography } from "@mui/material";
-import { cloneElement, FunctionComponent, ReactElement } from "react";
+import { cloneElement, FC, ReactElement } from "react";
 import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
 import WithRoles from "../../../hoc/withRoles";
 import ListIcon from "@mui/icons-material/List";
@@ -18,7 +18,7 @@ type Req = {
   [key in keyof Result]: number;
 };
 
-const CounterAnalytics: FunctionComponent = () => {
+const CounterAnalytics: FC = () => {
   const { data } = useSWR<Req>("/metrics/count");
 
   const result: Result = {
